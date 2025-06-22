@@ -1,0 +1,190 @@
+body{
+    font-family: 'Courier New', 'Lucida Console', monospace;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #003136;
+}
+
+.char1{
+    color:#00ffff;
+}
+
+.char2{
+    color: #e1ac2ee8;
+}
+
+.char1,.char2{
+    font-size: 2em;
+    font-weight: bold;
+    
+}
+
+.main_container{
+    width: 600px;
+    height: 650px;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.turn1,.turn2{
+    width: auto;
+    height: auto;
+    padding:0;
+    box-sizing: border-box;
+    text-align: center;
+    background: none;
+    color:rgb(97, 113, 107);
+    font-weight: bold;
+    border-radius: 0;
+    margin: 0 5px;
+    line-height: 1;
+}
+
+.turn1{
+    margin-left: 20px;
+    font-size: 1.5em;
+}
+
+
+.turn2{
+    font-size: 1em;
+    margin-right: 10px;
+}
+
+.turn-box{
+    
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: #1d3b41;
+    border-radius: 8px;
+    margin: 0 10px;
+}
+
+#refresh-icon{
+    width: 20px;
+    height: 20px;
+    padding: 0%;
+    box-sizing: border-box;
+    background-color: #61716b;
+    color: #1d3b41;
+    cursor: pointer;
+    border-radius: 100%;
+    margin-left: 10px;
+    transition: transform 0.7s ease;
+    margin-left: 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#refresh-icon:hover{
+    transform: rotate(200deg);
+}
+
+.grid{
+    display: grid;
+    margin-left: 50px;
+    grid-template-columns: repeat(3,140px);
+    gap: 20px;
+}
+
+.grid-button{
+    font-family: 'Courier New', 'Lucida Console', monospace;
+    padding: 20px;
+    font-size: 40px;
+    height:130px;
+    border: none;
+    margin-top: 20px;
+    border-radius: 8px;
+    background-color: #1d3b41;
+    color:white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    box-shadow: 4px 4px 10px #00000080;
+}
+
+.grid2{
+    display: grid;
+    margin-left: 50px;
+    margin-top: 20px;
+    grid-template-columns: repeat(3,70px);
+    gap: 90px;
+}
+
+.grid-button2{
+    font-family: 'Courier New', 'Lucida Console', monospace;
+    width: 140px;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    height: 80px;
+    border: none;
+    border-radius: 8px;
+    background-color: #1d3b41;
+    color: #1d3b41;
+    box-shadow: 4px 4px 10px #00000080;
+}
+
+.winning-button{
+    background-color: #FFD700;
+    color: black;
+    font-weight: bold;
+    animation: winFlash 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes winFlash{
+    from{
+        transform: scale(1);
+        box-shadow: 0 0 10px #00ff88;
+    }
+    to{
+        transform: scale(1.1);
+        box-shadow: 0 0 20px #00ff88;
+    }
+}
+
+.popup{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1d3b41;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 999;
+    box-shadow: 0 0 20px #00ffff;
+    animation: popupFade 0.4s ease-out;
+}
+
+.popup button{
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+    background-color: #00ffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.hidden{
+    display: none;
+}
+
+@keyframes popupFade{
+    from{
+        opacity: 0;
+        transform: translate(-50%,-60%);
+    }to{
+        opacity: 1;
+        transform: translate(-50%,-50%);
+    }
+}

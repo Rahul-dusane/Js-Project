@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/Index/index.css"></link>
+    <script src="/Index/index.js"></script>
+</head>
+<body>
+   <div> 
+        <div class="main_container">
+
+            <h3><span class="char1">X</span><span class="char2">O</span></h3>
+            
+            <div class="sub_container1" >
+                
+                <h5 id="pic_mark">PICK PLAYER 1`S MARK</h5>
+                <div class="sub_container1_5" >
+                    <div class="toggle-button">
+                        <div class="choice active" onclick="selectMark(this)">X</div>
+                        <div class="choice" onclick="selectMark(this)" >O</div>
+                    </div>
+                </div> 
+                <h5 id="note-1" style="margin-top:20px;">REMEMBER : X GOEX FIRST</h5>
+            </div>
+           
+            <!--<div class="sub_container2">
+                <h6 id="btn_newGameCpu">NEW GAME (VS CPU)
+            </div>
+            <div class="sub_container3">
+                <h6 id="btn_newGamePlayer">NEW GAME (VS PLAYER)
+            </div>-->
+           
+           <input type="button" id="btn_newGameCpu" value="NEW GAME (VS CPU)" style=" 
+            font-family: 'Courier New', 'Lucida Console', monospace;
+            width:100%;
+            height: 50px;
+            border-color: rgba(225, 172, 46, 0.909);
+            font-weight: bold;
+            box-sizing: border-box;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            background-color: rgba(225, 172, 46, 0.909);" onclick="gameWithCPU()">
+           
+           <input type="button" id="btn_newGamePlayer" value="NEW GAME (VS PLAYER)" style="
+            font-family: 'Courier New', 'Lucida Console', monospace;
+            width:100%;
+            height: 50px;
+            border-color: aqua;
+            font-weight: bold;
+            box-sizing: border-box;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background-color: aqua;" onclick="gameWithPlayer()">
+        
+        </div>
+
+        <audio id="selectAudio" src="/Sound/beep.mp3"></audio>
+        <audio id="startAudio" src="/Sound/gameStart.mp3"></audio>
+        
+   
+    </div>
+
+</body>
+
+</html>
+

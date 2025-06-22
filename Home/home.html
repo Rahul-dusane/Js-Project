@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/Home/home.css"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="/Home/home.js"></script>
+</head>
+<body>
+    <div>
+        <div class="main_container">
+            
+            <div class="top-bar">
+                <span class="char1">X</span><span class="char2">O</span>
+                
+                <span class="turn-box">
+                    <span class="turn1">X</span>
+                    <span class="turn2">TURN</span>
+                </span>
+                
+                <i class="fas fa-sync-alt" id="refresh-icon"></i>
+            </div>
+
+            <div class="grid" id="grid-container"></div>
+            <div class="grid2" id="grid-container2"></div>
+            <div id="win-popup" class="popup hidden">
+                <p id="win-message"></p>
+                <button onclick="closePopup()">OK</button>
+            </div>
+        </div>
+        <audio id="buttonAudio" src="/Sound/button.mp3"></audio>
+        <audio id="winAudio" src="/Sound/win.wav"></audio>
+    </div>
+</body>
+</html>

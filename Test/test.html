@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XO Toggle</title>
+  <style>
+    body {
+      background-color: #1a2a33;
+      color: white;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .toggle-box {
+      background-color: #1f3641;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      width: 320px;
+      box-shadow: 0 5px #121b20;
+    }
+
+    .toggle-box h4 {
+      font-weight: normal;
+      color: #a8bfc9;
+      margin-bottom: 15px;
+    }
+
+    .toggle-buttons {
+      display: flex;
+      background-color: #1a2a33;
+      padding: 10px;
+      border-radius: 10px;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .choice {
+      width: 80px;
+      height: 50px;
+      background-color: #1f3641;
+      border-radius: 10px;
+      font-size: 1.8rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #a8bfc9;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .choice.active {
+      background-color: #a8bfc9;
+      color: #1f3641;
+    }
+
+    .note {
+      color: #a8bfc9;
+      font-size: 0.7rem;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="toggle-box">
+    <h4>PICK PLAYER 1'S MARK</h4>
+    <div class="toggle-buttons">
+      <div class="choice active" onclick="selectMark(this)">X</div>
+      <div class="choice" onclick="selectMark(this)">O</div>
+    </div>
+    <p class="note">REMEMBER : X GOES FIRST</p>
+  </div>
+
+  <script>
+    function selectMark(selected) {
+      document.querySelectorAll('.choice').forEach(btn => btn.classList.remove('active'));
+      selected.classList.add('active');
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+<!-- 
+
+class TicTacToeGame {
+    constructor() {
+        this.marks = localStorage.getItem("selectMark") || "X";
+        this.count = 0;
+        this.xMoves = [];
+        this.oMoves = [];
+        this.xcount = 0;
+        this.tcount = 0;
+        this.ocount = 0;
+        this.winPattern = [
+            [1,2,3],[4,5,6],[7,8,9],
+            [1,4,7],[2,5,8],[3,6,9],
+            [1,5,9],[3,5,7]
+        ];
+        this.playerMark = this.marks;
+        this.cpuMark = this.marks === "X" ? "O" : "X";
+        this.init();
+    }
+
+    init() {
+        document.querySelector(".turn1").innerText = this.marks;
+        const refresh = document.getElementById("refresh-icon");
+        if (refresh) {
+            refresh.addEventListener("click", () => {
+                this.count = 0;
+                this.xMoves = [];
+                this.oMoves = [];
+                this.ticTacToeButton("grid-container");
+            });
+        }
+        this.ticTacToeButton("grid-container");
+        this.scoreBoard("grid-container2");
+        this.startVsCPU();
+    }
+
+    ticTacToeButton(containerId) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = "";
+        for(let i = 1; i <= 9; i++){
+            const button = document.createElement("button");
+            button.innerText = "";
+            button.className = "grid-button";
+            button.dataset.num = i;
+            button.addEventListener("click", () => this.handleMove(button));
+            container.appendChild(button);
+        }
+    }
+
+    handleMove(button) {
+        if((button.innerText !== "")) return ;
+        const sound = document.getElementById("buttonAudio");
+        if(sound){
+            sound.pause();
+            sound.currentTime = 0;
+            sound.play().catch(() => {});
+        }
+        const marksToBox = this.count % 2 === 0 ? this.playerMark : this.cpuMark;
+        button.innerText = marksToBox;
+        button.disabled = true;
+        const moveNum = parseInt(button.dataset.num);
+        if(marksToBox.toUpperCase() === "X"){
+            this.xMoves.push(moveNum);
+            const win = this.checkWinner(this.xMoves);
+            if(win){
+                this.highlightWinning(win);
+                this.disabledAllButtons();
+            }
+        }else{
+            this.oMoves.push(moveNum);
+            const win = this.checkWinner(this.oMoves);
+            if(win){
+                this.highlightWinning(win);
+                this.disabledAllButtons();
+            }
+        }
+        this.count++;
+        // CPU will make the move
+        const isVsCPU = localStorage.getItem("vsCPU") === "true";
+        if(isVsCPU && (this.count % 2 !== 0)){
+            setTimeout(() => this.makeCPUMove(), 500);
+        }
+        if (this.count === 9 && !this.checkWinner(this.xMoves) && !this.checkWinner(this.oMoves)) {
+            this.tcount++;
+            this.scoreBoard("grid-container2");
+            this.showPopup("🤝 It's a Tie!");
+            this.disabledAllButtons();
+            const winSound = document.getElementById("winAudio");
+            if(winSound){
+                winSound.pause();
+                winSound.currentTime = 0;
+                winSound.play().catch(() => {});
+            }
+        }
+    }
+
+    scoreBoard(containerId) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = "";
+        const color = ["#00ffff", "#61716b", "#e1ac2ee8"];
+        let text = [`X (YOU)<br> ${this.xcount}`, `TIES<br> ${this.tcount}`,`O (CPU)<br> ${this.ocount}`];
+        for(let i = 0; i < 3; i++){
+            const button = document.createElement("button");
+            button.className = "grid-button2";
+            button.style.backgroundColor = color[i];
+            button.innerHTML = text[i];
+            container.appendChild(button);
+        }
+    }
+
+    checkWinner(moves) {
+        for(let i = 0; i < this.winPattern.length; i++){
+            let pattern = this.winPattern[i];
+            let matchCount = 0;
+            for(let j = 0; j < pattern.length; j++){
+                if(moves.includes(pattern[j])){
+                    matchCount++;
+                }
+            }
+            if(matchCount === 3){
+                return pattern;
+            }
+        }
+        return false;
+    }
+
+    disabledAllButtons() {
+        const allButtons = document.querySelectorAll(".grid-button");
+        allButtons.forEach(btn => btn.disabled = true);
+    }
+
+    highlightWinning(pattern) {
+        const buttons = document.querySelectorAll(".grid-button");
+        for(let i = 0; i < buttons.length; i++){
+            const button = buttons[i];
+            const num = parseInt(button.dataset.num);
+            for(let j = 0; j < pattern.length; j++){
+                if(num === pattern[j]){
+                    button.classList.add("winning-button");
+                    setTimeout(() => {
+                        button.classList.remove("winning-button");
+                    }, 1500);
+                }
+            }
+        }
+        setTimeout(() => {
+            const popup = document.getElementById("win-popup");
+            const message = document.getElementById("win-message");
+            if(popup && message){
+                const winner = this.count % 2 !== 0 ? this.playerMark : this.cpuMark;
+                message.textContent = `🎉 Player : ${winner} Wins!`;
+                if(winner === 'X'){
+                    this.xcount++;
+                    this.scoreBoard("grid-container2");
+                }else if(winner === 'O'){
+                    this.ocount++;
+                    this.scoreBoard("grid-container2");
+                }
+                popup.classList.remove("hidden");
+            }
+            const winSound = document.getElementById("winAudio");
+            if(winSound){
+                winSound.pause();
+                winSound.currentTime = 0;
+                winSound.play().catch(() => {});
+            }
+        },1500);
+    }
+
+    showPopup(text) {
+        const popup = document.getElementById("win-popup");
+        const message = document.getElementById("win-message");
+        if(popup && message){
+            message.textContent = text;
+            popup.classList.remove("hidden");
+        }
+    }
+
+    closePopup() {
+        const popup = document.getElementById("win-popup");
+        if(popup){
+            popup.classList.add("hidden");
+        }
+    }
+
+    startVsCPU() {
+        const isVsCPU = localStorage.getItem("vsCPU") === "true";
+        if(!isVsCPU){
+            return ;
+        }
+        const firstTurn = this.playerMark === "O";
+        if(firstTurn){
+            this.makeCPUMove();
+        }
+    }
+
+    makeCPUMove() {
+        const availableButtons = Array.from(document.querySelectorAll(".grid-button")).filter(btn => btn.innerText === "");
+        if(availableButtons.length === 0){
+            return ;
+        }
+        const randomIndex = Math.floor(Math.random() * availableButtons.length);
+        const button = availableButtons[randomIndex];
+        setTimeout(() => button.click(),500);
+    }
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+    new TicTacToeGame();
+}); -->
