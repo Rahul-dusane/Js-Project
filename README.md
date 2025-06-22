@@ -1,30 +1,58 @@
-# Tic-Tac-Toe JavaScript Project
+# 🎮 Tic-Tac-Toe JavaScript Project
 
-A simple and interactive Tic-Tac-Toe game built with HTML, CSS, and JavaScript.
-
-## Features
-- Play against another player or the CPU
-- Sound effects for moves and wins
-- Scoreboard for X, O, and ties
-- Responsive and easy-to-use interface
-
-## How to Run
-1. Download or clone this repository.
-2. Open `Index/Index.html` in your web browser to start the game.
-3. Choose your mark (X or O) and select to play vs Player or CPU.
-
-## Folder Structure
-- `Index/` — Main menu and game mode selection
-- `Home/` — Game board and logic
-- `Sound/` — Sound files for game events
-- `Test/` — Test HTML file
-
-## Customization
-- You can change styles in the CSS files (`home.css`, `index.css`).
-- Sound files can be replaced in the `Sound/` folder.
-
-## Credits
-- Developed by Rahul (BSC IT, Sem 4)
+A **simple** and **interactive** Tic-Tac-Toe game built using **HTML, CSS, and JavaScript**. Perfect for casual fun or sharpening your logic skills! 🤖🧠
 
 ---
-Enjoy playing Tic-Tac-Toe!
+
+## ✨ Features
+- 👥 **Play against a friend** or 🤖 **challenge the CPU**
+- 🔊 Cool **sound effects** for every move and win
+- 🧮 Live **scoreboard** for X, O, and ties
+- 📱 **Responsive** design – works great on any screen
+- 🎨 Clean and customizable UI
+
+---
+
+## 🚀 How to Run the Game
+
+1. 📥 **Download** or `git clone` this repository.
+2. 🌐 Open `Index/Index.html` in your browser.
+3. ❌ Choose your mark (X or O) and pick your opponent (Player or CPU).
+4. 🕹️ Start playing and enjoy!
+
+---
+
+## 📁 Folder Structure
+
+📂 Tic-Tac-Toe/
+├── 📁 Index/ → Main menu and game mode selection
+
+├── 📁 Home/ → Game board and logic
+
+├── 📁 Sound/ → Sound effects for moves and wins
+
+└── 📁 Test/ → Sample or test HTML file
+
+
+---
+
+## 🛠️ Customization
+
+- 🎨 **Update styles** in `home.css` and `index.css` for a unique look.
+- 🎧 **Replace sound effects** in the `Sound/` folder with your own.
+
+---
+
+## 👨‍💻 Credits
+
+- 💡 Developed by **Rahul**  
+  🏫 *B.Sc. IT — Semester 4*
+
+---
+
+## 🕹️ Let's Play!
+
+Tic, Tac, Toe... who's gonna win? ❌⭕🎉  
+Have fun and feel free to contribute or suggest new features!
+
+---
